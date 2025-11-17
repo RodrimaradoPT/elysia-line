@@ -5,9 +5,9 @@ import { line } from "../src/index";
 const app = new Elysia()
   .use(
     line({
-      channelSecret: "e4401e00b74bd2999a3f4892434517ce",
+      channelSecret: "",
       channelAccessToken:
-        "PEr48O9Lnhb4Pb2uWF0eLMRlsI675R///Wabgy5uo3kJGTtWp8nUx+1SRY+LTX8u0lx9jixmkZjd7QmplARwloB3ZXNy1dXcTywmEyjI4F2cvUFQQJjlmr1MBnlJchQ7FZkjbO9/Y2/s2D70ZVNN0wdB04t89/1O/w1cDnyilFU=",
+        "",
       verbose: false,
     })
   )

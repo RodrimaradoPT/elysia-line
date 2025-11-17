@@ -1,0 +1,43 @@
+{
+  "name": "elysia-line",
+  "version": "1.0.1",
+  "author": "KrataiB <krataib.dev@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrataiB/elysia-line.git"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "elysia": ">=1.0.0"
+  },
+  "bugs": "https://github.com/KrataiB/elysia-line/issues",
+  "description": "Official LINE Messaging API webhook plugin for Elysia — clean, typed, zero-config",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/KrataiB/elysia-line#readme",
+  "keywords": [
+    "elysia",
+    "elysia-plugin",
+    "line",
+    "line-bot",
+    "line-messaging-api",
+    "bun",
+    "thailand",
+    "webhook"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "prepublishOnly": "bun run build"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@line/bot-sdk": "^10.5.0"
+  }
+}

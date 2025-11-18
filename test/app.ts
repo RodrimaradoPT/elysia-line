@@ -1,37 +1,29 @@
-// test/app.ts
 import { Elysia } from "elysia";
 import { line } from "../src/index";
 
 const app = new Elysia()
   .use(
     line({
-      channelSecret: "",
-      channelAccessToken:
-        "",
-      verbose: false,
+      channelSecret: process.env.channelSecret!,
+      channelAccessToken: process.env.channelAccessToken!,
+      verbose: true,
     })
   )
   .post("/webhook", async ({ line, set }) => {
-    if (line) {
-      line.on("message:text", (event) => {
-        line.reply(event.replyToken, {
-          type: "text",
-          text: `You said: ${event.message.text}`,
-        });
-
-        if (event.source.userId) {
-          line.push(event.source.userId, {
-            type: "text",
-            text: "This is a push message!",
-          });
-        }
-      });
-
-      await line.handle();
-      return "OK";
+    if (!line) {
+      return "Not a LINE webhook";
     }
 
-    return "Not a LINE webhook";
+    // Register handlers ทุกครั้งก่อน handle
+    line.on("message:text", (event) => {
+      line.reply(event.replyToken, {
+        type: "text",
+        text: `You said: ${event.message.text}`,
+      });
+    });
+
+    await line.handle();
+    return "OK";
   })
   .listen(3000);
 

